@@ -66,7 +66,7 @@ docs/
 
 * SQL
 * Modelagem de Banco de Dados Relacional
-* PostgreSQL / MySQL
+* PostgreSQL
 * Power BI
 * Git & GitHub
 
