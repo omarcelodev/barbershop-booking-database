@@ -1,0 +1,15 @@
+-- TIPOS ENUM
+CREATE TYPE role_enum AS ENUM ('CLIENTE', 'BARBEIRO', 'ADMIN');
+CREATE TYPE status_agendamento_enum AS ENUM (
+ 'PENDENTE', 'CONFIRMADO', 'CONCLUIDO', 'CANCELADO', 'REMARCADO'
+);
+CREATE TYPE status_notificacao_enum AS ENUM (
+ 'PENDENTE', 'ENVIADO', 'FALHA'
+);
+CREATE TYPE canal_notificacao_enum AS ENUM (
+ 'EMAIL', 'SMS', 'WHATSAPP'
+);
+CREATE TYPE dia_semana_enum AS ENUM (
+ 'DOMINGO', 'SEGUNDA', 'TERCA', 'QUARTA',
+ 'QUINTA', 'SEXTA', 'SABADO'
+);
