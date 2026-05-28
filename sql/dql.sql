@@ -1,3 +1,5 @@
+-- 2.1 CONSULTAS DE DADOS - DQL (Data Query Language)
+-- 2.1.1 LISTAR USUARIOS ATIVOS
 SELECT
  id,
  nome,
@@ -9,6 +11,7 @@ FROM usuario
 WHERE ativo = TRUE
 ORDER BY role, nome;
 
+-- 2.1.2 LISTAR BARBEIROS E SUAS ESPECIALIDADES
 SELECT
  b.id AS barbeiro_id,
  u.nome AS barbeiro,
@@ -19,6 +22,7 @@ JOIN usuario u ON u.id = b.usuario_id
 WHERE b.ativo = TRUE
 ORDER BY u.nome;
 
+-- 2.1.3 LISTAR SERVICOS DISPONIVEIS COM PRECO FORMATADO
 SELECT
  id,
  nome,
@@ -27,6 +31,7 @@ SELECT
 FROM servico
 ORDER BY preco;
 
+-- 2.1.4 LISTAR HORARIOS DE ATENDIMENTO DE UM BARBEIRO
 SELECT
  u.nome AS barbeiro,
  a.dia_semana,
@@ -44,6 +49,7 @@ ORDER BY
  WHEN 'DOMINGO' THEN 7
  END;
 
+-- 2.1.5 LISTAR SERVICOS OFERECIDOS POR CADA BARBEIRO
 SELECT
  u.nome AS barbeiro,
  s.nome AS servico,
@@ -71,6 +77,7 @@ WHERE ag.status = 'CONCLUIDO'
 GROUP BY u.nome, TO_CHAR(ag.data_hora_inicio, 'YYYY-MM')
 ORDER BY mes DESC, receita_bruta DESC;
 
+-- 2.1.7 RANKING DE BARBEIROS POR DESEMPENHO
 SELECT
  RANK() OVER (ORDER BY COUNT(*) DESC) AS posicao,
  u.nome AS barbeiro,
@@ -86,6 +93,7 @@ JOIN servico s ON s.id = ag.servico_id
 GROUP BY u.nome, b.especialidade
 ORDER BY total_concluidos DESC;
 
+-- 2.1.8 ANALISE DE SERVICOS - DESEMPENHO E RECEITA
 SELECT
  s.nome AS servico,
  TO_CHAR(s.preco, 'FM"R$" 999G990D00') AS preco_unitario,
@@ -101,6 +109,7 @@ JOIN servico s ON s.id = ag.servico_id
 GROUP BY s.id, s.nome, s.preco
 ORDER BY total_agendamentos DESC;
 
+-- 2.1.9 RANKING DE CLIENTES POR GASTO E FREQUENCIA
 SELECT
  RANK() OVER (ORDER BY COUNT(*) DESC) AS posicao,
  u.nome AS cliente,
